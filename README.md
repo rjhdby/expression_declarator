@@ -9,6 +9,38 @@
 3. Calculate
 
 # Example 
+### Quick example
+```rust
+struct IntHandler {}
+
+impl PrimitiveHandler<i32> for IntHandler {
+    fn from_string(&self, input: &String) -> Result<i32, ()> {
+        return Result::Ok(input.parse::<i32>().unwrap())
+    }
+
+    fn can_start_with(&self, input: String) -> bool {
+        input.chars().all(|it| { it.is_numeric() })
+    }
+}
+fn main() {
+    let mut calculator = ExpressionDeclarator::<i32>::new(Box::new(IntHandler {}));
+    calculator.add_infix(
+        "+".to_string(),
+        "Add".to_string(),
+        Box::new(|op1, op2| { op1 + op2 }),
+        LOW_ORDER,
+    );
+    calculator.add_infix(
+        "/".to_string(),
+        "Divide".to_string(),
+        Box::new(|op1, op2| { op1 / op2 }),
+        HIGH_ORDER,
+    );
+    
+    assert_eq!(calculator.calculate("4+6/2").ok().unwrap(), 7);
+    assert_eq!(calculator.calculate("(4+6)/2").ok().unwrap(), 5);
+}
+```
 ### Boolean algebra 
 See https://github.com/rjhdby/expression_declarator/src/bool_calculator
 ### f64 calculator

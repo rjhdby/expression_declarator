@@ -64,16 +64,17 @@ mod tests {
             "+".to_string(),
             "+".to_string(),
             Box::new(|op1, op2| { op1 + op2 }),
-            HIGH_ORDER,
+            LOW_ORDER,
         );
         calculator.add_infix(
             "/".to_string(),
             "/".to_string(),
             Box::new(|op1, op2| { op1 / op2 }),
-            LOW_ORDER,
+            HIGH_ORDER,
         );
 
-        assert_eq!(calculator.calculate("4+(6/2)").ok().unwrap(), 7);
+        assert_eq!(calculator.calculate("4+6/2").ok().unwrap(), 7);
+        assert_eq!(calculator.calculate("(4+6)/2").ok().unwrap(), 5);
         assert_eq!(calculator.calculate("(((1))+(1))").ok().unwrap(), 2);
     }
 
