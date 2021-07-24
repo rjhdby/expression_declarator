@@ -1,0 +1,27 @@
+[package]
+name = "expression_declarator"
+version = "0.1.0"
+edition = "2018"
+description = "Customisable expression calculator"
+keywords = ["expression", "math", "parser", "ast"]
+license = "MIT"
+authors = ["Gromov Andrey <rjhdbylive@gmail.com>"]
+documentation = "https://github.com/rjhdby/expression_declarator/README.md"
+repository = "https://github.com/rjhdby/expression_declarator"
+
+[features]
+default = ["f64_calculator", "bool_calculator"]
+f64_calculator = ["regex", "lazy_static"]
+bool_calculator = []
+
+[lib]
+name = "expression_declarator"
+crate-type = ["lib"]
+
+[dependencies.regex]
+version = "1.5.4"
+optional = true
+
+[dependencies.lazy_static]
+version = "1.4.0"
+optional = true
