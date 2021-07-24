@@ -1,11 +1,16 @@
 # Customisable expression calculator
+1. Define your domain (e.g. float algebra, boolean algebra, trigonometry, etc)
+2. Define possible operations (e.g. "+", "sin(x)", "|"(OR))
+3. Calculate expression `calculator.calculate("-10*sin(23)^4+(1-2/3)")` 
 
-Define your own operations and calculate expression based on them.
+# How it works
+1. Tokenize input string according defined domain and operations
+2. Build AST (reverse Polish notation method used) 
+3. Calculate
 
 # Example 
 ### Boolean algebra 
 See https://github.com/rjhdby/expression_declarator/src/bool_calculator
-
 ### f64 calculator
 See https://github.com/rjhdby/expression_declarator/src/f64_calculator
 
