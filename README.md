@@ -63,8 +63,6 @@ pub enum OperationType {
 | Prefix   | 1         | Function with one argument on the right                             | `-2`, `!true`, `sin(x)` |
 | Postfix  | 1         | Function with one argument on the left                              | `2!` - factorial        |
 
-Constant is constant. For example Pi=3.1415
-
 # Priority of operations
 Provided as `u8` integer. Higher value assume higher priority.
 Priority can be managed with parenthesis. e.g. `10 * 2 + 1 = 21`, but `10 * (2 + 1) = 30` 
